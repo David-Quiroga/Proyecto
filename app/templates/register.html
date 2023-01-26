@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>MOAA Style - Crear Cuenta</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/moaaxd.jpg')}}" width="5px">
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='estilos/estilos.css') }}">
+</head>
+
+<body class="fondo2">
+    <center>
+        <div class="fondo">
+            <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='img/logomoaa2.png') }}" class="img-fluid" alt="NO SALE LA PUTA IMAGEN" width="250px">
+            </a>
+        </div>
+        <!-- menu -->
+    </center>
+    <div class="cabecera">
+    </div>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="{{url_for('static', filename='img/moaa.1.png')}}" alt="" width="100" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="/" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('hombre')}}">Hombre</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('mujer')}}">Mujer</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('niño')}}">Niños</a></li>
+                        </ul>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('servicios')}}">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('conocenos')}}">Conocenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('contactanos')}}">Contáctanos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- login -->
+    <center>
+    <form id="formulario" action="">
+        <div class="container" >
+            <br>
+            <div class="col-md-5">
+                <div class="row login">
+                    <div class="card registro">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <h2 class="letra2">HAZTE MIEMBRO DE MOAA STYLE</h2>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nombres:</label>
+                                <input type="text" name="username" id="nombre" class="form-control" placeholder="Lola"
+                                    aria-describedby="helpId" Required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Apellidos:</label>
+                                <input type="text" name="lastname" id="apellido" class="form-control" placeholder="Bum"
+                                    aria-describedby="helpId" Required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Fecha de Nacimiento:</label>
+                                <input type="Date" name="datebirth" id="fecha" class="form-control" placeholder="21/06/2002"
+                                    aria-describedby="helpId" Required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="form-label">Telefono:</label>
+                                <input type="number" name="phone" id="movil" class="form-control" placeholder="0984085113"
+                                    aria-describedby="helpId" Required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Dirección:</label>
+                                <input type="text" name="addres" id="direccion" class="form-control" placeholder="Nuevo Amanecer "
+                                    aria-describedby="helpId" Required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Correo:</label>
+                                <input type="mail" name="email" id="correo" class="form-control" placeholder="abcd@moaastyle.com"
+                                    aria-describedby="helpId" Required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Contraseña:</label>
+                                <input type="password" name="password" id="clave" class="form-control" placeholder="***"
+                                    aria-describedby="helpId" Required>
+                            </div>
+                            <div class="mb-3">
+                                <button  type="submit" class="btn btn-dark" id="btn_user"> Registrarse</button>
+                                <!-- <input type="submit" class="btn btn-primary" id="enviar" value="enviar" onclick="validacion()"> -->
+                                <p><a href="{{ url_for('login')}}">Crear cuenta</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </center>
+    <br>
+        <!-- pie de pagina -->
+        <br>
+        <center>
+            <footer class="fondopiepag">
+                <div class="row colorletra">
+                    <div class="col-sm-4">
+                        <div>
+                            <div>
+                                <p class="fuente">SERVICIO AL CLIENTE:</p>
+                                <p><em>02 347 2222</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 ">
+                        <div>
+                            <div>
+                                <p class="fuente">EMAIL:</p>
+                                <p><em>servicio.cliente@moaastyle.com</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="fuente">CONSULTA TU PEDIDO:</p>
+                        <p><em>0984085112</em></p>
+                    </div>
+                </div>
+            </footer>
+        </center>
+    
+        <!-- marca de agua -->
+        <div class="fondopiepag">
+            <center>
+                <hr size="5px" color="black">
+                <p class="silver-text">M.O.A.A STYLE</p>
+                <br>
+            </center>
+        </div>
+        <!-- Bootstrap JavaScript Libraries -->
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"></script>
+            <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    </body>
+<<<<<<< HEAD
+    </html>
+=======
+    
+    </html>
+>>>>>>> 6a355d9c66d943003bc299a1d4c53b846ae4c58a
