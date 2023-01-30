@@ -3,6 +3,6 @@ CREATE TABLE users (
     username VARCHAR(222) NOT NULL,
     password VARCHAR(10) NOT NULL,
     email VARCHAR(225) NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    
 );
 

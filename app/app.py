@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, send_file, jsonify, url_for, redirect
+from flask import Flask, render_template, request, send_file, jsonify, url_for, redirect, flash, session
 from psycopg2 import connect, extras
-from os import environ
+import os
 from cryptography.fernet import Fernet
 from wtforms import StringField, PasswordField, SubmitField
 from flask_wtf import FlaskForm
@@ -12,6 +12,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 key = Fernet.generate_key()
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] =  'MOAA'
 
 host = 'localhost'
 port = 5432
@@ -19,16 +21,32 @@ dbname = 'MOOA'
 user = 'postgres'
 password = 'Campos0430'
 
+# login_manager = LoginManager()
+# login_manager.init_app(app)
+# login_manager.login_view = 'login'
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
+
+# class User(dbname.Model, UserMixin):
+#     id = dbname.Column(dbname.Integer, primary_key=True)
+#     username = dbname.Column(dbname.String(20), nullable=False, unique=True)
+#     password = dbname.Column(dbname.String(80), nullable=False)
 
 def get_connection():
-    conn = connect(host=host, port=port, dbname=dbname, user=user, password=password)
+    conn = connect(host=host, port=port, dbname=dbname,
+                        user=user, password=password)
     return conn
 
 
 @app.route('/')
 def index():
     # return "<h1>Hola mundo</h1>"
+
     return render_template("index.html")
+
+# Productos
 
 
 @app.route('/hombre')
@@ -44,6 +62,7 @@ def mujer():
 @app.route('/niño')
 def niño():
     return render_template("kid.html")
+# Fin de Productos
 
 
 @app.route('/servicios')
@@ -56,18 +75,30 @@ def conocenos():
     return render_template('conocenos.html')
 
 
-@app.route('/contactanos')
-def contactanos():
-    return render_template('contactanos.html')
+@app.route('/lcatalogo')
+def lcatalogo():
+
+    return render_template('lcatalogo.html')
+
+
+@app.route('/catalogo')
+def catalogo():
+    return render_template('catalogo.html')
 
 
 @app.route('/register')
 def register():
+
     return render_template('register.html')
 
-# @app.route('/login')
+
+# @app.route('/login/', methods=['GET', 'POST'])
 # def login():
 #     return render_template('login.html')
+
+@app.route('/contactanos')
+def contactanos():
+    return render_template('contactanos.html')
 
 
 @app.route('/dashboard')
@@ -95,14 +126,14 @@ def create_users():
     datebirth = new_user['datebirth']
     phone = new_user['phone']
     addres = new_user['addres']
-    email    = new_user['email']
-    password = new_user['password']
+    email = new_user['email']
+    password = Fernet(key).encrypt(bytes(new_user['password'], 'utf-8'))
 
     conn = get_connection()
     cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
     cur.execute('INSERT INTO users (username, lastname, datebirth, phone, addres, email, password) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *',
-                (username, lastname, datebirth, phone, addres, email, password ))
+                (username, lastname, datebirth, phone, addres, email, password))
 
     new_created_user = cur.fetchone()
     print(new_created_user)
@@ -133,13 +164,14 @@ def update_users(id):
     conn = get_connection()
     cur = conn.cursor(cursor_factory=extras.RealDictCursor)
     new_user = request.get_json()
-    username = new_user ['username']
-    email = new_user ['email']
+    username = new_user['username']
+    email = new_user['email']
     password = new_user['password']
 
-    cur.execute(' UPDATE users SET  username = %s, email = %s, password = %s WHERE id = %s RETURNING *', (username, email, password, id))
+    cur.execute(' UPDATE users SET  username = %s, email = %s, password = %s WHERE id = %s RETURNING *',
+                (username, email, password, id))
     update_user = cur.fetchone()
-    
+
     conn.commit()
     cur.close()
     conn.close()
@@ -163,10 +195,10 @@ def get_user(id):
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[
-            InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+            InputRequired(), Length(min=4, max=222)], render_kw={"placeholder": "Username"})
 
     password = PasswordField(validators=[
-            InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+            InputRequired(), Length(min=8, max=222)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Login')
 
