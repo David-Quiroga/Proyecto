@@ -63,6 +63,11 @@ def mujer():
 def niño():
     return render_template("kid.html")
 # Fin de Productos
+#Carrito
+
+@app.route('/carrito')
+def carrito():
+    return render_template("carrito.html")
 
 
 @app.route('/servicios')
