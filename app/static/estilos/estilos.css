@@ -8,14 +8,14 @@
 .fondo2{
     background-color: rgb(24, 4, 34);
 }  
-  a:hover {
+a:hover {
     background-color: rgba(59, 10, 78, 0.473);
   }
-  .fondopiepag{
+.fondopiepag{
     padding-top: 30px;
     background-color: rgb(44, 43, 0);
   }
-  .silver-text {
+.silver-text {
     color: rgb(62, 68, 3);
 }
 .carrucel{
@@ -140,11 +140,11 @@ padding-top: 40px;
   background: linear-gradient(#4e84a8, #888aa0);
 }
 
-.carrito{
+/* .carrito{
   margin-right: 10px;
   color: rgb(255, 255, 255);
   width: 100px;
-}
+} */
 
 .sticky-container{
   padding:0px;
