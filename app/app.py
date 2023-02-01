@@ -9,6 +9,8 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_sqlalchemy import SQLAlchemy
 
+import hashlib
+
 
 app = Flask(__name__)
 key = Fernet.generate_key()
@@ -47,7 +49,6 @@ def index():
     return render_template("index.html")
 
 # Productos
-
 
 @app.route('/hombre')
 def hombre():
@@ -108,6 +109,10 @@ def contactanos():
 
 @app.route('/dashboard')
 def dashboard():
+    # Verificación de variable de sesión
+    if 'id' not in session:
+        return redirect(url_for('login'))
+
     return render_template('dashboard.html')
 
 
@@ -132,7 +137,10 @@ def create_users():
     phone = new_user['phone']
     addres = new_user['addres']
     email = new_user['email']
-    password = Fernet(key).encrypt(bytes(new_user['password'], 'utf-8'))
+    #password = Fernet(key).encrypt(bytes(new_user['password'], 'utf-8'))
+    password_hash = hashlib.md5(new_user['password'].encode())
+    password=password_hash.hexdigest()
+    
 
     conn = get_connection()
     cur = conn.cursor(cursor_factory=extras.RealDictCursor)
@@ -209,12 +217,25 @@ class LoginForm(FlaskForm):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
     form = LoginForm()
     if form.validate_on_submit():
-        user = user.query.filter_by(username=form.username.data).first()
+        cur.execute('SELECT * FROM users WHERE username = %s', (form.username.data,))
+        user = cur.fetchone()
+        print(user)
         if user:
-            if (user.password, form.password.data):
-                login_user(user)
+            for_password_hash = hashlib.md5(form.password.data.encode())
+            print(for_password_hash.hexdigest())
+            print(user['password'])
+            if user['password'] == for_password_hash.hexdigest():
+                # Guardamos el id del usuario en session
+                session['id']= user['id']
+                # En el logout se debería eliminar la variable de sesión session.pop('username', None)
+                
+                password_hash = hashlib.md5(form.password.data.encode())
+                
+               # print(f"variable de sesión almacenada {session['id']}, password hashed {password_hash.hexdigest()}")
                 return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
