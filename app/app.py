@@ -81,15 +81,15 @@ def conocenos():
     return render_template('conocenos.html')
 
 
-@app.route('/lcatalogo')
-def lcatalogo():
+# @app.route('/lcatalogo')
+# def lcatalogo():
 
-    return render_template('lcatalogo.html')
+#     return render_template('lcatalogo.html')
 
 
-@app.route('/catalogo')
-def catalogo():
-    return render_template('catalogo.html')
+# @app.route('/catalogo')
+# def catalogo():
+#     return render_template('catalogo.html')
 
 
 @app.route('/register')
