@@ -47,6 +47,7 @@ header{
 .cart{
     width: 39px;
     height: 38px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.493);
 }
 .cart-products{
     position: absolute!important;

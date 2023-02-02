@@ -1,4 +1,4 @@
-*{
+body{
   margin: 0;
   padding: 0;
 }
@@ -78,32 +78,33 @@ a:hover {
 .card{
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.493);
   }
-  .cuadro:hover{
+.cuadro:hover{
   transform : scale(1.2);
   }
-  .fondo3{
+.fondo3{
     padding-left: 30px;
     background-color: rgb(15, 15, 15)
   }
-  .info{
+.info{
     width: 800px;
     height: 300px;
     background-color:rgb(58, 61, 61); 
   }
-  .mapa{
+.mapa{
     padding-top: 20px;
     height: 362px;
     background-color:rgb(63, 0, 0);  
 }
 .formulario{
-  
+  margin-top: 150px;
+  padding: 3px;
   background: linear-gradient(#38363a, #272727, rgb(0, 0, 0));
+  margin: 0% auto;
 }
 .conocenos{
   width: 800px;
   height: 390px;
-  background-color:rgb(58, 61, 61); 
-}
+  background-color:rgb(58, 61, 61); }
 .servicios{
   width: 800px;
   height: 380px;
@@ -138,6 +139,54 @@ padding-top: 40px;
 }
 .dash{
   background: linear-gradient(#4e84a8, #888aa0);
+}
+
+.contenedor{
+  width: 100%;
+  padding: 15px;
+}
+.input-contenedor{
+  margin-bottom: 15px;
+  border: 1px solid rgba(170, 170, 170, 0);
+  text-align: center;
+}
+.icon{
+  min-width: 50px;
+  text-align: center;
+  color: rgb(8, 8, 8)
+}
+.button{
+  border: none;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.918);
+  font-size: 20px;
+  background:  #1a2537;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button:hover{
+  background: cadetblue;
+}
+p{
+  text-align: center;
+}
+.link{
+  text-decoration: none;
+    color: #1a2537;
+  font-weight: 600;
+}
+.link:hover{
+   color: cadetblue;
+}
+@media(min-width:768px)
+{
+  .formulario{
+      margin: auto;
+      width: 500px;
+      margin-top: 150px;
+      border-radius: 2%;
+  }
 }
 
 /* .carrito{

@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/svg+xml" href="./images/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/moaaxd.jpg')}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/moaaxd.jpg')}}" width="5px">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='estilos/style.css') }}"
     <link rel="stylesheet" href="{{ url_for('static', filename='estilos/estilos.css') }}">>
     
 </head>
-<body>
+<body class="fondo2">
     <header>
         <div class="header-section container">
             <img class="logo" src="./images/logoShop.png" alt="">
             <div>
-                <img onclick="showCart(this)" class="cart" src="./images/cart.png" alt="">
+                <img onclick="showCart(this)" class="cart" alt="">
                 <p class="count-product">0</p>
             </div>
             <div class="cart-products" id="products-id">

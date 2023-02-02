@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>MOAA Style - Contáctanos</title>
+    <!-- Required meta tags -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/moaaxd.jpg')}}" width="5px">
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/estilos.css') }}">
+</head>
+
+<body class="fondo2">
+    <center>
+        <div class="fondo">
+            <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='img/logomoaa2.png') }}" class="img-fluid" alt="NO SALE LA PUTA IMAGEN" width="250px">
+            </a>
+        </div>
+        <!-- menu -->
+    </center>
+    <div class="cabecera">
+    </div>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="{{url_for('static', filename='img/moaa.1.png')}}" alt="" width="100" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('hombre')}}">Hombre</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('mujer')}}">Mujer</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('niño')}}">Niños</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('servicios')}}">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('conocenos')}}">Conocenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('contactanos')}}">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('comentarios')}}">Comentarios</a>
+                    </li>
+                    <i class="bi bi-cart-dash-fill"></i>
+                </ul>
+                <a href="../usuarios/login.html"><button type="button" class="btn btn-secondary">Iniciar Sesión
+                    </button></a>
+            </div>
+        </div>
+    </nav>
+    <!-- menu2 -->
+    <nav class="navbar navbar-expand fondo3">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active text-light" href="/">Inicio <span
+                    class="visually-hidden">(current)</span></a>
+        </div>
+        <div class="text-light">
+            / Comentarios 
+        </div>
+    </nav>
+    <br>
+    <!-- contactanos -->
+    <div class="container">
+        <div class="row comentarios">
+            <div class="col-sm-7 text-light">
+                <div class="card formulario">
+                    <div class="card-header">
+                        Tienes preguntas?
+                    </div>
+                    <div class="card-body">
+                        <form  id="commentForm"   >
+                            <label for="username">Username</label>
+                            <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                            <br>
+                            <label for="username">Email</label>
+                            <input type="email" name="email" placeholder="abcd@moaastyle.com" class="form-control mb-2" required>
+                            <br>
+                            <div class="mb-3">
+                            <label for="username">Pregunta</label>
+                            <input type="text" name="pregunta" cols="60" rows="6" class="form-control mb-2" required></input>
+                            <br>
+                            <button class="btn btn-primary">Save</button>
+                            <p><a href="{{ url_for('index')}}">Cancelar</a></p>
+                        </form>
+                        <br>
+                        <ul id="userList" class="list-group">
+            
+                        </ul>
+                    </div>    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>        <!-- pie de pagina -->
+        <br>
+        <center>
+            <footer class="fondopiepag">
+                <div class="row colorletra">
+                    <div class="col-sm-4">
+                        <div>
+                            <div>
+                                <p class="fuente">SERVICIO AL CLIENTE:</p>
+                                <p><em>02 347 2222</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 ">
+                        <div>
+                            <div>
+                                <p class="fuente">EMAIL:</p>
+                                <p><em>servicio.cliente@moaastyle.com</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="fuente">CONSULTA TU PEDIDO:</p>
+                        <p><em>0984085112</em></p>
+                    </div>
+                </div>
+            </footer>
+        </center>
+    
+        <!-- marca de agua -->
+        <div class="fondopiepag">
+            <center>
+                <hr size="5px" color="black">
+                <p class="silver-text">M.O.A.A STYLE</p>
+                <br>
+            </center>
+        </div>
+        <!-- Bootstrap JavaScript Libraries -->
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename= 'js/comentarios.js') }}"></script>    
+    </body>
+    
+    </html>

@@ -97,6 +97,108 @@ def register():
 
     return render_template('register.html')
 
+#Crud Comentario
+
+@app.get('/api/comment')
+def get_comment():
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+
+    cur.execute('SELECT * FROM comment')
+    users = cur.fetchall()
+
+    cur.close()
+    conn.close()
+    return jsonify(users)
+
+
+@app.post('/api/comment')
+def create_comment():
+    new_comment = request.get_json()
+    username = new_comment['username']
+    email = new_comment['email']
+    pregunta = new_comment['pregunta']
+
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+
+    cur.execute('INSERT INTO comment (username, email, pregunta) VALUES (%s, %s, %s) RETURNING *',
+                (username, email, pregunta))
+    new_created_comment = cur.fetchone()
+    print(new_created_comment)
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+    return jsonify(new_created_comment)
+
+
+@app.delete('/api/comment/<id>')
+def delete_comentarios(id):
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    cur.execute("DELETE FROM comment WHERE id = %s RETURNING *", (id,))
+    user = cur.fetchone()
+
+    conn.commit()
+
+    conn.close()
+    cur.close()
+
+    if user is None:
+        return jsonify({'message': 'User Not Found'}, 404)
+
+    return jsonify(user)
+
+
+@app.put('/api/comment/<id>')
+def update_comment(id):
+
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+
+    new_comment = request.get_json()
+    username = new_comment['username']
+    email = new_comment['email']
+    pregunta = new_comment['pregunta']
+
+    cur.execute(
+        'UPDATE comment SET username = %s, email = %s, pregunta = %s WHERE id = %s RETURNING *', (username, email, pregunta, id))
+    update_comment = cur.fetchone()
+    
+    conn.commit()
+    
+    conn.close()
+    cur.close()
+    
+    if update_comment is None:
+        return jsonify({'message': 'User Not Found'}, 404)
+
+    return jsonify(update_comment)
+
+
+@app.get('/api/comment/<id>')
+def get_comments(id):
+
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    cur.execute('SELECT * FROM comment WHERE id = %s', (id,))
+    user = cur.fetchone()
+
+    if user is None:
+        return jsonify({'message': 'User Not Found'}), 404
+
+    print(user)
+
+    return jsonify(user)
+
+@app.get('/comentarios')
+def comentarios():
+    return render_template('comentarios.html')
+
+# fin crud commentarios
+
 
 # @app.route('/login/', methods=['GET', 'POST'])
 # def login():
@@ -235,7 +337,7 @@ def login():
                 
                 password_hash = hashlib.md5(form.password.data.encode())
                 
-               # print(f"variable de sesión almacenada {session['id']}, password hashed {password_hash.hexdigest()}")
+                # print(f"variable de sesión almacenada {session['id']}, password hashed {password_hash.hexdigest()}")
                 return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
