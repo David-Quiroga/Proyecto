@@ -1,7 +1,8 @@
 const partnerForm = document.querySelector('#partnerForm');
 
 let users = []
-editing = false
+let editing = false
+let userId = null
 
 window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('/api/partner');
@@ -39,7 +40,23 @@ partnerForm.addEventListener('submit', async e => {
         users.unshift(data);
         console.log("hola mundo")
     } else{
-        fetch(`/api/partner/${users.id}`)
+        const response = await fetch(`/api/partner/${userId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                company,
+                descrip,
+                locate,
+                phone,
+                email,
+            }),
+        })
+        const updatePartner = await response.json()
+        users = users.map(user => user.id === updatePartner.id ? updatePartner : user)
+        renderUser(users)
+        
     }
 
     renderUser(users);
@@ -94,9 +111,12 @@ function renderUser(users) {
             partnerForm['locate'].value        = data.locate;
             partnerForm['phone'].value         = data.phone;
             partnerForm['email'].value         = data.email;   
+            
             editing = true
+            userId = data.id
         })
 
         userList.append(userItem);
     })
 }
+
