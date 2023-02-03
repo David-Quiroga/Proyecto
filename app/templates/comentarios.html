@@ -63,6 +63,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ url_for('comentarios')}}">Comentarios</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('partner')}}">Asociados</a>
+                    </li>
                     <i class="bi bi-cart-dash-fill"></i>
                 </ul>
                 <a href="../usuarios/login.html"><button type="button" class="btn btn-secondary">Iniciar Sesión
@@ -101,7 +104,7 @@
                             <label for="username">Pregunta</label>
                             <input type="text" name="pregunta" cols="60" rows="6" class="form-control mb-2" required></input>
                             <br>
-                            <button class="btn btn-primary">Save</button>
+                            <center><button class="btn btn-primary">Save</button></center>
                             <p><a href="{{ url_for('index')}}">Cancelar</a></p>
                         </form>
                         <br>
