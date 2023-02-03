@@ -1,7 +1,8 @@
 const commentForm = document.querySelector('#commentForm');
 
 let users = []
-editing = false
+let editing = false
+let userId = null
 
 window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('/api/comment');
@@ -32,11 +33,24 @@ commentForm.addEventListener('submit', async e => {
         });
     
         const data = await response.json();
-       
+
         users.unshift(data);
         console.log("hola mundo")
     } else{
-        fetch(`/api/comment/${users.id}`)
+        const response = await fetch(`/api/comment/${userId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                email,
+                pregunta,
+            }),
+        })
+        const updateUser = await response.json()
+        users = users.map(user => user.id === updateUser.id ? updateUser : user)
+        renderUser(users)
     }
 
     renderUser(users);
@@ -75,7 +89,7 @@ function renderUser(users) {
             renderUser(users);
 
         })
-
+        
         const btnEdit = userItem.querySelector('.btn-edit');
 
         btnEdit.addEventListener('click', async e => {
@@ -88,9 +102,11 @@ function renderUser(users) {
             commentForm["pregunta"].value = data.pregunta;
 
             editing = true
-            
+            userId = data.id
         })
 
         userList.append(userItem);
+
+
     })
 }
