@@ -199,6 +199,112 @@ def comentarios():
 
 # fin crud commentarios
 
+# ! inicio crud Socios
+
+@app.get('/api/partner')
+def get_partner():
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+
+    cur.execute('SELECT * FROM partner')
+    users = cur.fetchall()
+
+    cur.close()
+    conn.close()
+    return jsonify(users)
+
+
+@app.post('/api/partner')
+def create_partner():
+    new_partner     = request.get_json()
+    company         = new_partner['company']
+    descrip         = new_partner['descrip']
+    locate          = new_partner['locate']
+    phone           = new_partner['phone']
+    email           = new_partner['email']
+
+
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+
+    cur.execute('INSERT INTO partner (company, descrip, locate, phone, email) VALUES (%s, %s, %s, %s, %s) RETURNING *',
+                (company, descrip, locate, phone, email))
+    new_created_partner = cur.fetchone()
+    print(new_created_partner)
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+    return jsonify(new_created_partner)
+
+
+@app.delete('/api/partner/<id>')
+def delete_socio(id):
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    cur.execute("DELETE FROM partner WHERE id = %s RETURNING *", (id,))
+    user = cur.fetchone()
+
+    conn.commit()
+
+    conn.close()
+    cur.close()
+
+    if user is None:
+        return jsonify({'message': 'User Not Found'}, 404)
+
+    return jsonify(user)
+
+
+@app.put('/api/partner/<id>')
+def update_partner(id):
+
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+
+    new_partner     = request.get_json()
+    company         = new_partner['company']
+    descrip         = new_partner['descrip']
+    locate          = new_partner['locate']
+    phone           = new_partner['phone']
+    email           = new_partner['email']
+
+    cur.execute(
+        'UPDATE partner SET company = %s, descrip = %s, locate = %s, phone = %s, email = %s WHERE id = %s RETURNING *', (company, descrip, locate, phone, email, id))
+    update_partner = cur.fetchone()
+    
+    conn.commit()
+    
+    conn.close()
+    cur.close()
+    
+    if update_partner is None:
+        return jsonify({'message': 'User Not Found'}, 404)
+
+    return jsonify(update_partner)
+
+
+@app.get('/api/partner/<id>')
+def get_partners(id):
+
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    cur.execute('SELECT * FROM partner WHERE id = %s', (id,))
+    user = cur.fetchone()
+
+    if user is None:
+        return jsonify({'message': 'User Not Found'}), 404
+
+    print(user)
+
+    return jsonify(user)
+
+@app.get('/partner')
+def partner():
+    return render_template('partner.html')
+
+# ! fin crud socios
 
 # @app.route('/login/', methods=['GET', 'POST'])
 # def login():
