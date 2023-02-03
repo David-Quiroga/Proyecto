@@ -21,7 +21,7 @@ host = 'localhost'
 port = 5432
 dbname = 'MOOA'
 user = 'postgres'
-password = 'Campos0430'
+password = '1234'
 
 # login_manager = LoginManager()
 # login_manager.init_app(app)

@@ -76,7 +76,7 @@ header{
 
 .carts{
     max-width: 250px;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+    box-shadow: 0 3px 10px rgb(0, 0, 0);
     padding-bottom: 34px;
     margin-bottom: 40px;
 }

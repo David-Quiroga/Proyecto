@@ -188,6 +188,9 @@ p{
       border-radius: 2%;
   }
 }
+.menuxd{
+  z-index: 100px;
+}
 
 /* .carrito{
   margin-right: 10px;
