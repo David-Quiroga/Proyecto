@@ -17,7 +17,7 @@
 <body class="fondo2">
     <center>
         <div class="fondo">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="#">
                 <img src="{{ url_for('static', filename='img/logomoaa2.png') }}" class="img-fluid" alt="NO SALE LA PUTA IMAGEN" width="250px">
             </a>
         </div>
@@ -40,36 +40,18 @@
                     <li class="nav-item">
 
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/">Hombre</a></li>
-                            <li><a class="dropdown-item" href="/">Mujer</a></li>
-                            <li><a class="dropdown-item" href="/">Niños</a></li>
-                        </ul>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('comentarios')}}">Comentarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="/">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/">Conocenos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/">Contáctanos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/">Comentarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/">Asociados</a>
+                        <a class="nav-link text-light" href="{{ url_for('partner')}}">Asociados</a>
                     </li>
                     <i class="bi bi-cart-dash-fill"></i>
                 </ul>
-                <a href="../usuarios/login.html"><button type="button" class="btn btn-secondary">Iniciar Sesión
+                <a href="{{ url_for('index')}}"><button type="button" class="btn btn-link">Cerrar Sesión
                     </button></a>
+                    
             </div>
         </div>
     </nav>
@@ -105,15 +87,19 @@
                             <input type="text" name="phone" placeholder="0997686868" class="form-control mb-2" required>
                             <label for="email">Correo</label>
                             <input type="email" name="email" placeholder="example@gmail.com" class="form-control mb-2" required>
-                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-primary">Guardar</button>
+                            <p><a href="{{ url_for('dashboard')}}">Cancelar</a></p>
                         </form>
-                        <ul id="userList" class="list-group">
-            
-                        </ul>
-                    </div>    
+                        
+                    </div> 
+                       
                 </div>
             </div>
             </div>
+            <br>
+            <ul id="userList" class="list-group">
+            
+            </ul>
         </div>
     </div>
 </center>

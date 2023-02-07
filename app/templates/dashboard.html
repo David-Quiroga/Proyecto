@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>MOAA Style - carrito de compra</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/moaaxd.jpg')}}" />
@@ -19,7 +20,7 @@
     <center>
         <div class="fondo">
             <a class="navbar-brand" href="/">
-                <img src="{{ url_for('static', filename='img/logomoaa2.png') }}" class="img-fluid" alt="NO SALE LA PUTA IMAGEN" width="250px">
+                <img src="{{ url_for('static', filename='img/logomoaa2.png') }}" class="img-fluid" alt="" width="250px">
             </a>
         </div>
 
@@ -47,10 +48,10 @@
     </center>
     <nav class="navbar navbar-expand-lg bg-dark ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="#">
                 <img src="{{url_for('static', filename='img/moaa.1.png')}}" alt="" width="100" height="60">
             </a>
-            <a class="navbar-brand text-light" href="/"> Inició </a>
+            <a class="navbar-brand text-light" href="{{ url_for('comentarios')}}"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -61,28 +62,10 @@
                     <li class="nav-item">
 
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ url_for('hombre')}}">Hombre</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('mujer')}}">Mujer</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('niño')}}">Niños</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('servicios')}}">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('conocenos')}}">Conocenos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('contactanos')}}">Contáctanos</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-light" href="{{ url_for('comentarios')}}">Comentarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url_for('partner')}}">Asociados</a>
                     </li>
                     <i class="bi bi-cart-dash-fill"></i>
                 </ul>
@@ -138,7 +121,7 @@
                     <img src="{{url_for('static', filename='img/colecciones/coleccion1.png')}}" alt="">
                     <p><span>35</span>$</p>
                 </div>
-                <p class="title"> Converse OROCHIMARU</p>
+                <p class="title"> Short ANGEL</p>
                 <a href="" class="btn-add-cart" data-id="2">add to cart</a>
             </div>
             <div class="carts">
@@ -146,7 +129,7 @@
                     <img src="{{url_for('static', filename='img/jogger/jogger3.png')}}" alt="">
                     <p><span>15.50</span>$</p>
                 </div>
-                <p class="title"> Pantaloneta ANGEL</p>
+                <p class="title"> Jogger Cargo</p>
                 <a href="" data-id="3" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -154,7 +137,7 @@
                     <img src="{{url_for('static', filename='img/t-shirt/t-shirt7.png')}}" alt="">
                     <p><span>20.20</span>$</p>
                 </div>
-                <p class="title"> Sudera ANGELS</p>
+                <p class="title"> T-shirt Brown</p>
                 <a href="" data-id="4" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -162,7 +145,7 @@
                     <img src="{{url_for('static', filename='img/t-shirt/t-shirt12.png')}}" alt="">
                     <p><span>19</span>$</p>
                 </div>
-                <p class="title"> Sudadera Blanca MOAA</p>
+                <p class="title"> T-shir1 Euphoria</p>
                 <a href="" data-id="5" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -170,7 +153,7 @@
                     <img src="{{url_for('static', filename='img/t-shirt/t-shirt15.png')}}" alt="">
                     <p><span>45</span>$</p>
                 </div>
-                <p class="title"> Sudadera Negra MOAA</p>
+                <p class="title"> T-shirt With</p>
                 <a href="" data-id="6" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -178,7 +161,7 @@
                     <img src="{{url_for('static', filename='img/hoodies/hoodie8.jpg')}}" alt="">
                     <p><span>23.99</span>$</p>
                 </div>
-                <p class="title"> Sudadera DAEMON </p>
+                <p class="title"> Sudadera TRASHER </p>
                 <a href="" data-id="7" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -194,7 +177,7 @@
                     <img src="{{url_for('static', filename='img/hoodies/hoodie9.png')}}" alt="">
                     <p><span>16</span>$</p>
                 </div>
-                <p class="title"> Pulsera Red Snake</p>
+                <p class="title"> Sudadera OUTSIDE</p>
                 <a href="" data-id="9" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -202,7 +185,7 @@
                     <img src="{{url_for('static', filename='img/t-shirt/t-shirt10.png')}}" alt="">
                     <p><span>17.50</span>$</p>
                 </div>
-                <p class="title"> Pulsera skeleton </p>
+                <p class="title"> T-shirt LILIA </p>
                 <a href="" data-id="10" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -210,7 +193,7 @@
                     <img src="{{url_for('static', filename='img/t-shirt/t-shirt8.png')}}" alt="">
                     <p><span>45</span>$</p>
                 </div>
-                <p class="title"> Pulsera snake skeleton </p>
+                <p class="title">T-shirt BEAR </p>
                 <a href="" data-id="11" class="btn-add-cart">add to cart</a>
             </div>
             <div class="carts">
@@ -218,13 +201,15 @@
                     <img src="{{url_for('static', filename='img/jeans/jean1.jpg')}}" alt="" height="250px">
                     <p><span>45</span>$</p>
                 </div>
-                <p class="title"> Pulsera snake skeleton </p>
+                <p class="title"> Jean Black Soul</p>
                 <a href="" data-id="11" class="btn-add-cart">add to cart</a>
             </div>
         </div>
     </div>
     <br>
     <br>
+    <br>
+    <hr>
     <center>
         <footer class="fondopiepag">
             <div class="row colorletra">
@@ -251,6 +236,14 @@
             </div>
         </footer>
     </center>
+    <!-- marca de agua -->
+    <div class="fondopiepag">
+        <center>
+            <hr size="5px" color="black">
+            <p class="silver-text">M.O.A.A STYLE</p>
+            <br>
+        </center>
+    </div>
 
     <script>
         function showCart(x){

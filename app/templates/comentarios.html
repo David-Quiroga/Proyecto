@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>MOAA Style - Contáctanos</title>
+    <title>MOAA Style - Comentarios</title>
     <!-- Required meta tags -->
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
     </div>
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="#">
                 <img src="{{url_for('static', filename='img/moaa.1.png')}}" alt="" width="100" height="60">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -40,26 +40,7 @@
                     <li class="nav-item">
 
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ url_for('hombre')}}">Hombre</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('mujer')}}">Mujer</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('niño')}}">Niños</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('servicios')}}">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('conocenos')}}">Conocenos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('contactanos')}}">Contáctanos</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ url_for('comentarios')}}">Comentarios</a>
                     </li>
@@ -68,7 +49,7 @@
                     </li>
                     <i class="bi bi-cart-dash-fill"></i>
                 </ul>
-                <a href="../usuarios/login.html"><button type="button" class="btn btn-secondary">Iniciar Sesión
+                <a href="{{ url_for('index')}}"><button type="button" class="btn btn-link">Cerrar Sesión
                     </button></a>
             </div>
         </div>
@@ -102,20 +83,24 @@
                             <br>
                             <div class="mb-3">
                             <label for="username">Pregunta</label>
+                            <br>
                             <input type="text" name="pregunta" cols="60" rows="6" class="form-control mb-2" required></input>
                             <br>
                             <center><button class="btn btn-primary">Save</button></center>
-                            <p><a href="{{ url_for('index')}}">Cancelar</a></p>
+                            <p><a href="{{ url_for('dashboard')}}">Cancelar</a></p>
                         </form>
                         <br>
-                        <ul id="userList" class="list-group">
-            
-                        </ul>
-                    </div>    
+                        
+                    </div>   
+                     
                 </div>
             </div>
             </div>
         </div>
+        <br>
+        <ul id="userList" class="list-group">
+            
+        </ul>
     </div>
     </div>        <!-- pie de pagina -->
         <br>

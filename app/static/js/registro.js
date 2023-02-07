@@ -39,3 +39,9 @@ formulario.addEventListener('submit', async e => {
   formulario.reset();
 
 });
+
+function creado() {
+  var creado=document.getElementById("creado");
+  console.log("holaa")
+  alert("cuenta creada con exito");
+}

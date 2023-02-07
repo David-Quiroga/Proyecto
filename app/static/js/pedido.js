@@ -1,4 +1,5 @@
 function pedido() {
     var pedidos=document.getElementById("pedido");
-    alert("Compra realizada");
+    console.log("holaa")
+    alert("cuenta creada con exito");
 }

@@ -104,7 +104,7 @@ header{
 .carts a{
     font-family: system-ui;
     text-decoration: none;
-    background: red;
+    background: rgb(135, 0, 0);
     padding: 9px 23px;
     color: #fff;
     font-size: 17px;
