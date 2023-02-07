@@ -64,6 +64,7 @@
             </div>
         </div>
     </nav>
+    <center>
     <div class="container">
         <br>
         <div class="col-md-5">
@@ -73,7 +74,7 @@
                     <center>
                         <h3 class="letra2">TU CUENTA PARA TODO LO RELACIONADO CON MOAA STYLE</h3>
                     </center>
-    <center>
+                    <hr>
         <form id="formulario" method="POST" action ="">
             <div class="contenedor">
                 <div class="input-contenedor">
@@ -89,62 +90,16 @@
             </div>
             <div class="form-group">
                     <center>
-                    <br>
-                    <a href="{{ url_for('register')}}"><button type="button" class="btn btn-primary">Crear Cuenta</button></a>
-            </div>
-            <div class="form-group">
-                    <center>
-                    <br>
-                    {{ form.submit }}
-            </div>
+                    <button type="button" class="btn btn-secondary">{{ form.submit }}</button>
+                    <a href="{{ url_for('register')}}"><button type="button" class="btn btn-primary">Crear Cuenta</button></a>                    
+            </div>    
         </div>
-                </div>
-            </div>
-    </center>
-            <!-- <div>
-                <label class="blanco" for="sesionIniciadaHTML">Mantener la sesión iniciada</label>
-                <input type="checkbox" id="sesionIniciadaHTML" />
+    </div>
+</div>
+    </div>
+        </div>
+            </form>
 
-            </div> -->
-            </div>
-        </div>
-        </form>
-    </div>
-    <br>
-    <center>
-        <footer class="fondopiepag">
-            <div class="row colorletra">
-                <div class="col-sm-4">
-                    <div>
-                        <div>
-                            <p class="fuente">SERVICIO AL CLIENTE:</p>
-                            <p><em>02 347 2222</em></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 ">
-                    <div>
-                        <div>
-                            <p class="fuente">EMAIL:</p>
-                            <p><em>servicio.cliente@moaastyle.com</em></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <p class="fuente">CONSULTA TU PEDIDO:</p>
-                    <p><em>0984085112</em></p>
-                </div>
-            </div>
-        </footer>
-    </center>
-    <!-- marca de agua -->
-    <div class="fondopiepag">
-        <center>
-            <hr size="5px" color="black">
-            <p class="silver-text">M.O.A.A STYLE</p>
-            <br>
-        </center>
-    </div>
 </body>
 
 </html>
